@@ -1,0 +1,52 @@
+SELECT
+    company_name,
+    revenue,
+    CASE
+        WHEN revenue < 200 THEN 'Low'
+        WHEN revenue BETWEEN 200 AND 400 THEN 'Medium'
+        ELSE 'High'
+    END AS revenue_category
+FROM
+    fortune_companies;
+    
+    SELECT
+    industry,
+    AVG(revenue) AS avg_revenue
+FROM
+    fortune_companies
+GROUP BY
+    industry
+HAVING
+    AVG(revenue) > 300;
+    
+    SELECT
+    company_name,
+    employees,
+    paid_time_off_days
+FROM
+    fortune_companies
+WHERE
+    employees > 5000 OR paid_time_off_days > 20;
+    
+   SELECT
+    industry,
+    SUM(employees) AS total_employees,
+    AVG(revenue) AS avg_revenue,
+    MAX(avg_employee_tenure) AS max_tenure
+FROM
+    fortune_companies
+GROUP BY
+    industry; 
+    
+    SELECT
+    company_name,
+    industry,
+    avg_employee_tenure
+FROM
+    fortune_companies
+WHERE
+    industry = 'Technology'
+    AND avg_employee_tenure > (
+        SELECT AVG(avg_employee_tenure)
+        FROM fortune_companies
+    );
