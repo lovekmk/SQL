@@ -1,25 +1,23 @@
 SELECT
-    company_name,
-    revenue,
-    CASE
-        WHEN revenue < 200 THEN 'Low'
-        WHEN revenue BETWEEN 200 AND 400 THEN 'Medium'
-        ELSE 'High'
-    END AS revenue_category
+company_name,
+revenue,
+CASE
+WHEN revenue < 200 THEN 'Low'   
+WHEN revenue BETWEEN 200 AND 400 THEN 'Medium'
+ELSE 'High'
+END AS revenue_category
 FROM
-    fortune_companies;
+fortune_companies;
     
-    SELECT
-    industry,
-    AVG(revenue) AS avg_revenue
+SELECT
+industry,
+AVG(revenue) AS avg_revenue
 FROM
-    fortune_companies
-GROUP BY
-    industry
-HAVING
-    AVG(revenue) > 300;
+fortune_companies
+GROUP BY industry
+HAVING AVG(revenue) > 300;
     
-    SELECT
+SELECT
     company_name,
     employees,
     paid_time_off_days
